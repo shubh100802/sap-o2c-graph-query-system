@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAP O2C Context Graph</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="title-wrap">
+        <div class="title">Order to Cash Context Graph</div>
+        <div class="subtitle">Graph + grounded conversational analytics</div>
+      </div>
+      <div class="controls">
+        <button id="reloadGraphBtn" class="btn">Reload</button>
+        <button id="fitGraphBtn" class="btn">Fit</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="graph-pane">
+        <div class="graph-toolbar">
+          <div class="toolbar-left">
+            <input id="nodeSearchInput" type="text" placeholder="Search node id or label..." />
+            <button id="searchNodeBtn" class="btn btn-quiet">Find</button>
+            <button id="clearHighlightBtn" class="btn btn-quiet">Clear Highlight</button>
+          </div>
+          <div id="graphStats" class="stats">Nodes: 0 | Edges: 0</div>
+        </div>
+
+        <div id="cyWrap">
+          <div id="cy"></div>
+          <div id="graphLoading" class="loading-overlay hidden">Loading graph...</div>
+        </div>
+
+        <div class="legend">
+          <span><i class="dot customer"></i>Customer</span>
+          <span><i class="dot sales_order"></i>Sales Order</span>
+          <span><i class="dot delivery"></i>Delivery</span>
+          <span><i class="dot invoice"></i>Invoice</span>
+          <span><i class="dot journal_entry"></i>Journal</span>
+          <span><i class="dot payment"></i>Payment</span>
+        </div>
+      </section>
+
+      <aside class="side-pane">
+        <section class="panel inspector">
+          <h2>Node Inspector</h2>
+          <p class="hint">Click a node, inspect metadata, then expand neighbors.</p>
+          <div class="row">
+            <button id="expandNodeBtn" class="btn" disabled>Expand Selected Node</button>
+            <span id="selectedNodeTag" class="chip">None selected</span>
+          </div>
+          <div id="nodeDetails" class="details">No node selected.</div>
+        </section>
+
+        <section class="panel chat">
+          <h2>Chat With Graph</h2>
+          <div id="chatLog" class="chat-log"></div>
+          <div class="examples">
+            <button class="chip-btn example-chip" data-q="Which products are associated with the highest number of billing documents?">
+              Top billed products
+            </button>
+            <button class="chip-btn example-chip" data-q="Trace full flow for billing document 90504248">
+              Trace billing flow
+            </button>
+            <button class="chip-btn example-chip" data-q="Identify sales orders that have broken or incomplete flows (delivered but not billed)">
+              Incomplete flows
+            </button>
+          </div>
+          <textarea id="queryInput" rows="3" placeholder="Ask a dataset question..."></textarea>
+          <div class="row">
+            <button id="sendBtn" class="btn">Send</button>
+            <button id="runExamplesBtn" class="btn btn-quiet">Run All Examples</button>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <script src="./vendor/cytoscape/cytoscape.min.js"></script>
+    <script>
+      if (!window.cytoscape) {
+        const script = document.createElement("script");
+        script.src = "https://unpkg.com/cytoscape@3.30.2/dist/cytoscape.min.js";
+        document.head.appendChild(script);
+      }
+    </script>
+    <script src="./app.js"></script>
+  </body>
+</html>
