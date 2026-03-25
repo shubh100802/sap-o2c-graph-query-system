@@ -2,7 +2,7 @@ const { getGraph, getNodeDetails, expandAroundNode } = require("../services/grap
 
 async function fetchGraph(req, res) {
   try {
-    const limit = Math.min(parseInt(req.query.limit) || 100, 200);
+    // const limit = Math.min(parseInt(req.query.limit) || 100, 200);
     
     const data = await getGraph(req.query.limit);
     res.status(200).json(data);
@@ -28,7 +28,7 @@ module.exports = {
     try {
       const { type, id } = req.params;
 
-      const limit = Math.min(parseInt(req.query.limit) || 50, 100);
+      // const limit = Math.min(parseInt(req.query.limit) || 50, 100);
       
       const data = await expandAroundNode(type, id, req.query.limit);
       res.status(200).json(data);
