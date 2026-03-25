@@ -6,7 +6,7 @@ This project implements a **context graph system with an LLM-powered query inter
 
 ## Submission Links
 
-- Working Demo Link: `http://localhost:3000` (replace with deployed URL if hosted)
+- Working Demo Link: `https://sap-o2c-graph-query-system.onrender.com/` 
 - Public GitHub Repository: `https://github.com/shubh100802/sap-o2c-graph-query-system`
 - AI Coding Session Logs: [`AI_CODING_LOGS/`](./AI_CODING_LOGS)
 
