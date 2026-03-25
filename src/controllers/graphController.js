@@ -7,7 +7,7 @@ async function fetchGraph(req, res) {
     const data = await getGraph(req.query.limit);
     res.status(200).json(data);
   } catch (error) {
-    console.error("Graph fetch failed:", error.message);
+    console.error("Graph fetch failed FULL ERROR:", error);
     res.status(500).json({ error: "Unable to fetch graph data" });
   }
 }
