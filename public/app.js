@@ -101,7 +101,7 @@ function renderNodeDetails(data) {
 async function loadGraph() {
   setLoading(true);
   try {
-    const response = await fetch("/api/graph?limit=100");
+    const response = await fetch("/api/graph?limit=1000");
     if (!response.ok) throw new Error("Failed to fetch graph");
     const graphData = await response.json();
     const elements = toElements(graphData);
